@@ -1,11 +1,26 @@
 <form action="/foods" method="post">
-  <%= erb :"/foods/_form" %>
+  <label for="name">Menu item name: </label>
+  <input id="name" type="text" name='food[name]'><br> 
+  
+  <label for="description">Menu item description: </label>
+  <input id="description" type="text" name='food[description]'><br>
 
+  <label for="price">Price: </label>
+  <input id="price" type="integer" name='food[price]'><br>
+  
   <label for="course_type">Which course? </label> 
-    <select id="course_type" name="food[course_type]">
-    <option value="Appetizer">Appetizer</option>
-    <option value="Entree">Entree</option>
-    <option value="Dessert">Dessert</option>
+  <select id="course_type" name="food[course_type]">
+  <option value="Appetizer">Appetizer</option>
+  <option value="Entree">Entree</option>
+  <option value="Dessert">Dessert</option>
   </select><br>
+
+  <label for="allergens">Allergens: </label>
+  <input id="allergens" type="checkbox" name="food[food_allergen][]" value="dairy">Dairy
+  <input id="allergens" type="checkbox" name="food[food_allergen][]" value="soy">Soy
+  <input id="allergens" type="checkbox" name="food[food_allergen][]" value="gluten">Gluten
+  <input id="allergens" type="checkbox" name="food[food_allergen][]" value="nuts">Nuts
+  <input id="allergens" type="checkbox" name="food[food_allergen][]" value="shellfish">Shellfish
+
   <input type="submit">
 </form>

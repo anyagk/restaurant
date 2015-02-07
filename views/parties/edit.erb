@@ -2,26 +2,9 @@
 
 <form action="/parties/<%= @party.id %>" method="POST">
   
-  <input type="hidden" name="_method" value="patch">
-  
   <label for="name">Number of guests: </label>
   <input id="name" type="integer" name='party[people]' value="<%= @party.people %>"><br> 
   
-  <label for="first_item"><%= @party.foods[1].name %></label>
-  <input id="first_item" type="integer" name='party[order][number_ordered]' value="<%= @party.order.number_ordered%>"><br> 
-
-
-
-
-  <label for="paid">Payment status</label> 
-  <select id="paid" name="party[paid]">
-    <option value="true">Paid</option>
-    <option value="false">Not paid</option>
-  </select> 
   <input type="submit">
 </form>
 
-<form action="/parties/<%= @party.id %>" method="POST">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Menu Item">
-</form>

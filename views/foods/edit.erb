@@ -2,7 +2,23 @@
 
 <form action="/foods/<%= @food.id %>" method="POST">
   <input type="hidden" name="_method" value="patch">
-  <%= erb :"/foods/_form" %>
+  
+  <label for="name">Menu item name: </label>
+  <input id="name" type="text" name='food[name]' value="<%= @food.name %>"><br> 
+
+  <label for="description">Menu item description: </label>
+  <input id="description" type="text" name='food[description]' value="<%= @food.description %>"><br>
+  
+  <label for="price">Price: </label>
+  <input id="price" type="integer" name='food[price]' value="<%= @food.price %>"><br>
+  
+  <label for="allergens">Allergens: </label>
+  <input id="allergens" type="checkbox" name="food[food_allergen][]" value="dairy">Dairy
+  <input id="allergens" type="checkbox" name="food[food_allergen][]" value="soy">Soy
+  <input id="allergens" type="checkbox" name="food[food_allergen][]" value="gluten">Gluten
+  <input id="allergens" type="checkbox" name="food[food_allergen][]" value="nuts">Nuts
+  <input id="allergens" type="checkbox" name="food[food_allergen][]" value="shellfish">Shellfish
+
   <input type="submit">
 </form>
 

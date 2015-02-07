@@ -3,8 +3,8 @@
 <h3>Appetizers</h3>
 <ul>
   <% @foods.each do |food| %>
-  <% if food.course_type == "Appetizer" %>
-    <li><a href="/foods/<%= food.id %>"><%= food.name %></a></li> 
+    <% if food.course_type == "Appetizer" %>
+      <li><a href="/foods/<%= food.id %>"><%= food.name %></a></li> 
     <% end %>
   <% end %>
 </ul><br>
@@ -12,8 +12,8 @@
 <h3>Entrees</h3>
 <ul>
   <% @foods.each do |food| %>
-  <% if food.course_type == "Entree" %>
-    <li><a href="/foods/<%= food.id %>"><%= food.name %></a></li> 
+    <% if food.course_type == "Entree" %>
+      <li><a href="/foods/<%= food.id %>"><%= food.name %></a></li> 
     <% end %>
   <% end %>
 </ul><br>
@@ -21,10 +21,10 @@
 <h3>Desserts</h3>
 <ul>
   <% @foods.each do |food| %>
-  <% if food.course_type == "Dessert" %>
-    <li><a href="/foods/<%= food.id %>"><%= food.name %></a></li> 
+    <% if food.course_type == "Dessert" %>
+      <li><a href="/foods/<%= food.id %>"><%= food.name %></a></li> 
     <% end %>
   <% end %>
-</ul>
+</ul></br>
 
 <a href="/foods/new">Create a new menu item</a>

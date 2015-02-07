@@ -1,12 +1,21 @@
 <h2>Receipt:</h2>
 
-<p>Table number <%= @party.table_number %></p>
+
+<p>Table <%= @party.table_number %></p> 
+<ul>
+  <% @items = @party.orders.each do |order| %>
+    <li><%= order.food.name %> - $<%= order.food.price %></li>
+  <% end %>
+</ul> 
+
 <% bill = 0 %>
 <% @party.orders.each do |order| %>
-  <% bill += order.number_ordered * order.food.price %>
+  <% bill += order.food.price %>
 <% end %>
-<% if @party.paid %>
-  <p>Paid $<%= bill %></p>
-<% else %>  
-  <p>Owes $<%= bill %></p>
-<% end %>
+<p>Total: $<%= bill %></p><br>
+
+<h3>Suggested gratuity:</h3>
+<p>15%: $<%= bill * 0.15 %> </p>
+<p>20%: $<%= bill * 0.20 %> </p>
+<p>25%: $<%= bill * 0.25 %> </p>
+<p>Thank you, please visit us again!</p>

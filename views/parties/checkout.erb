@@ -1,0 +1,14 @@
+<h2>Checkout table #<%= @party.table_number %></h2>
+<% bill = 0 %>
+<% @party.orders.each do |order| %>
+  <% bill += order.food.price %>
+<% end %>
+<p>This table owes: <%= bill %></p>
+<label for="tip">Tip: </label>
+<input id="tip" type="integer" name='party[tip]' value="">
+
+<label for="paid">Payment status</label> 
+<select id="paid" name="party[paid]">
+  <option value="false">Not paid</option>
+  <option value="true">Paid</option>
+</select><br> 

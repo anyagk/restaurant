@@ -6,13 +6,28 @@
   <% else %> 
   <p>This party has not paid.</p>
   <% end %>
-  
-  <p>Table <%= @party.table_number %> ordered:</p> 
+
+  <h3>Current orders:</h3>
   <ul>
-    <% @party.orders.each do |order| %>
-      <li><%= order.number_ordered %> <%= order.food.name %></li>
-    <% end %>
-  
-  </ul>  
+  <% @party.foods.each do |food| %>
+  <li><%= food.name %> - $<%= food.price %>
+
+  <form action="/parties/<%= party.id %>/orders"  method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Blog User">
+  </form></li>
+  <% end %>
+  </ul>
+
+  <form action="/parties/<%= party.id %>/order" method="POST">
+  <label for="food_items">Add menu items to the table's order</label> 
+  <select id="food_items" name="party[orders][food_id]">
+  <% @foods.each do |food| %>
+  <option value="<%= food.id %>"><%= @food.name %></option>
+  </select>
+  <input type="submit">
+  </form><br>
+
+
 <a href="/parties/<%= @party.id %>/receipt">See this party's receipt</a><br>
 <a href="/parties/<%= @party.id %>/edit">Edit this party</a>

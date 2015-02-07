@@ -19,7 +19,6 @@ class Restaurant < Sinatra::Base
   end
 
   get '/foods/new' do 
-    @food = Food.new
 
     erb :'foods/new'
   end
@@ -31,10 +30,15 @@ class Restaurant < Sinatra::Base
     erb :'foods/show'
   end
 
-  post '/foods' do 
-    food = Food.create(params[:food])
-    
-    redirect to "/foods/#{food.id}"
+  post '/foods' do
+      food = Food.create(name: params[:food][:name], price: params[:food][:price], course_type: params[:food][:course_type], description: params[:food][:description])
+      food_allergens = (params[:food][:food_allergen])
+      food_allergens.each do |food_allergen| 
+        allergen_id = Allergen.find_by(name: food_allergen).id
+        FoodAllergen.create(allergen_id: allergen_id, food_id: food.id)
+      end
+      
+      redirect to "/foods/#{food.id}"
   end
 
   get '/foods/:id/edit' do
@@ -45,8 +49,16 @@ class Restaurant < Sinatra::Base
 
   patch '/foods/:id' do
     food = Food.find(params[:id])
-    food.update(params[:food]) 
+    food.food_allergens.destroy_all
+    food.update(name: params[:food][:name], price: params[:food][:price])
+    food_allergens = (params[:food][:food_allergen])
     
+    food_allergens.each do |food_allergen| 
+      allergen_id = Allergen.find_by(name: food_allergen).id
+      FoodAllergen.create(allergen_id: allergen_id, food_id: params[:id])
+
+    end
+
     redirect to "/foods/#{food.id}"
   end
 
@@ -56,16 +68,16 @@ class Restaurant < Sinatra::Base
     
     redirect to '/foods'
   end  
-# _______________________________________________
+########################################
   get '/parties' do 
     @parties = Party.all
 
     erb :'parties/index'
   end
 
-  get '/parties/new' do 
-    @party = Party.new
-
+  get '/parties/new' do
+    @available = Party.free_table 
+    
     erb :'parties/new'
   end
 
@@ -79,21 +91,41 @@ class Restaurant < Sinatra::Base
 
   post '/parties' do 
     party = Party.create(params[:party])
-    
-    redirect to '/parties/#{party.id}'
+    redirect to "/parties/#{party.id}"
   end
 
-  get '/parties/:id/edit' do |id|
-    @party = Party.find(id) 
-    
+  get '/parties/:id/edit' do 
+    @party = Party.find(params[:id]) 
+    @foods = Food.all 
     erb :'parties/edit'
   end
 
+  post '/parties/:id/orders' do 
+    params[:oder][:party_id] = params[:id]
+    order = Order.create(params[:order])
+
+    redirect to "/parties/#{party.id}"
+  end
+
+  get '/parties/:id/checkout' do 
+    @party = Party.find(params[:id])
+    erb :'parties/checkout'
+  end    
+
   patch '/parties/:id' do
     party = Party.find(params[:id])
-    party.update(params[:party]) 
+    party.update(people: params[:party][:people])
+    Order.create(party_id: params[:id], food_id: params[:party][:orders][:food_id])
     
-    redirect to '/parties/#{party.id}'
+    redirect to "/parties/#{party.id}"
+  end
+
+  delete '/parties/:id/orders' do
+    params[:oder][:party_id] = params[:id]
+    order = Order.find(params[:id])
+    order.destroy
+
+    redirect to "/parties/#{party.id}"
   end
 
   delete '/parties/:id' do
