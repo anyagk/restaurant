@@ -8,7 +8,7 @@
     <% if order.comped %>
     <li><%= order.food.name %> - This item has been comped for your pleasure!</li>
     <% else %>
-    <li><%= order.food.name %> - <%= currency(order.food.price) %></li>
+    <li><%= order.food.name %> - <%=currency(order.food.price) %></li>
     <% end %>
   <% end %>
 </ul> 

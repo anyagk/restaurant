@@ -11,7 +11,7 @@ class Restaurant < Sinatra::Base
   enable :sessions
 
   get '/welcome' do 
-    "Welcome"
+    "Welcome" 
     # erb :'static/welcome'
   end  
 
@@ -166,13 +166,19 @@ class Restaurant < Sinatra::Base
     erb :'employees/index'
   end
 
-   get '/employees/:id' do
-     @employee = Employee.find(params[:id])
-     session[:id] = @employee.id
-     @parties = @employee.parties
+  get '/employees/:id' do
+    @employee = Employee.find(params[:id])
+    session[:id] = @employee.id
+    @parties = @employee.parties
 
-     erb :'employees/show'
-   end
+    erb :'employees/show'
+  end
+
+  post '/employees' do 
+    employee = Employee.create(params[:employee])
+
+    redirect to "/employees/#{employee.id}"
+  end
 
 
   get "/console" do

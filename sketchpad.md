@@ -1,13 +1,4 @@
 THINGS TO DO:
-
-fix the employees show tips feature
-   <% @parties.each do |party| %>
-      <% tips_total = 0 %>
-      <% tips_total += party.tip %>
-      <% end %>
-    <p>Tips so far:<%= currency(tips_total) %></p>
-
-set up employee new
 create login and password feature
 STYLING
 

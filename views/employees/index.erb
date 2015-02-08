@@ -1,5 +1,7 @@
   <h2>All Employees</h2><br>
 
+  <p>Please select your name to start a new table</p>
+
   <% @employees.each do |employee| %>
     <li><a href="/employees/<%= employee.id %>"><%= employee.name %></a></li>
   <% end %>

@@ -1,4 +1,8 @@
 <h2><%= @employee.name %></h2>
-
+  <% tips_total = 0 %>
+    <% @parties.each do |party| %>
+      <% tips_total += party.tip %>
+      <% end %>
+    <p>Tips: <%=currency(tips_total) %></p>
 
 <a href="/parties/new">Add party</a>
