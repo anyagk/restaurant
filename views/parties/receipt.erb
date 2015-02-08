@@ -1,21 +1,46 @@
 <h2>Receipt:</h2>
 
 
-<p>Table <%= @party.table_number %></p> 
+<p>Table number <%= @party.table_number %></p>
+<p>Server: <%= @party.employee.name %></p> 
 <ul>
-  <% @items = @party.orders.each do |order| %>
-    <li><%= order.food.name %> - $<%= order.food.price %></li>
+  <% @party.orders.each do |order| %>
+    <% if order.comped %>
+    <li><%= order.food.name %> - This item has been comped for your pleasure!</li>
+    <% else %>
+    <li><%= order.food.name %> - <%= currency(order.food.price) %></li>
+    <% end %>
   <% end %>
 </ul> 
 
 <% bill = 0 %>
 <% @party.orders.each do |order| %>
+  <% if order.comped == false %>
   <% bill += order.food.price %>
+  <% end %>
 <% end %>
-<p>Total: $<%= bill %></p><br>
+<p>Bill: <%= currency(bill) %></p><br>
+
+<form action="/parties/<%= @party.id %>/closeout" method="post">
+<label for="tip">Tip: </label>
+<input id="tip" type="integer" name='party[tip]'><br>
+<label for="total">Total: </label>
+<input id="total" type="integer" name='party[total]'><br>
+
+
+
+<input type="hidden" name="_method" value="PATCH">
+<input type="submit" value="Close table">
+</form>
+<br> 
 
 <h3>Suggested gratuity:</h3>
-<p>15%: $<%= bill * 0.15 %> </p>
-<p>20%: $<%= bill * 0.20 %> </p>
-<p>25%: $<%= bill * 0.25 %> </p>
+<p>15%: <%= currency(bill * 0.15) %> </p>
+<p>20%: <%= currency(bill * 0.20) %> </p>
+<p>25%: <%= currency(bill * 0.25) %> </p>
 <p>Thank you, please visit us again!</p>
+
+
+
+
+

@@ -1,33 +1,51 @@
 <h2>Party is seated at table number <%= @party.table_number %></h2>
+<h2>Server: <%= @party.employee.name %></h2>
+
 
 <p><%= @party.people %> top</p>
 <% if @party.paid %> 
-  <p>This party has paid.</p>
-  <% else %> 
-  <p>This party has not paid.</p>
-  <% end %>
+<p>This party has paid.</p>
+<% else %> 
+<p>This party has not paid.</p>
+<% end %> 
 
-  <h3>Current orders:</h3>
-  <ul>
-  <% @party.foods.each do |food| %>
-  <li><%= food.name %> - $<%= food.price %>
+<h3>Food ordered:</h3>
+<ul>
+<% @party.orders.each do |order| %>
+<li><%= order.food.name %> - <%= currency(order.food.price) %>
 
-  <form action="/parties/<%= party.id %>/orders"  method="POST">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Blog User">
-  </form></li>
-  <% end %>
-  </ul>
+<% unless order.comped %>
+<form action="/orders/<%= order.id %>"  method="POST">
+<input type="hidden" name="_method" value="PATCH">
+<input type="hidden" name="order[comped]" value="true">
+<input type="submit" value="Comp item">
+</form>
+<% end %>
 
-  <form action="/parties/<%= party.id %>/order" method="POST">
-  <label for="food_items">Add menu items to the table's order</label> 
-  <select id="food_items" name="party[orders][food_id]">
-  <% @foods.each do |food| %>
-  <option value="<%= food.id %>"><%= @food.name %></option>
-  </select>
-  <input type="submit">
-  </form><br>
+<form action="/orders/<%= order.id %>"  method="POST">
+<input type="hidden" value="<%= order.id %>">
+<input type="hidden" name="_method" value="DELETE">
+<input type="submit" value="Delete item">
+</form></li>
+<% end %>
+</ul>
+
+<% unless @party.paid %>
+<form action="/orders" method="POST">
+<label for="food">Add menu items to the table's order</label> 
+<select id="food" name="order[food_id]">
+<% @foods.each do |food| %>
+<option value="<%= food.id %>"><%= food.name %></option>
+<% end %>
+</select>
+<input type="hidden" name="order[party_id]" value="<%= @party.id %>">
+<input type="submit">
+</form>
+<% end%><br>
+
+<% unless @party.paid %>
+<a href="/parties/<%= @party.id %>/receipt">Checkout</a>
+<% end%>
+<br>
 
 
-<a href="/parties/<%= @party.id %>/receipt">See this party's receipt</a><br>
-<a href="/parties/<%= @party.id %>/edit">Edit this party</a>

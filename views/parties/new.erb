@@ -1,18 +1,15 @@
 <form action="/parties" method="post">
 
 <label for="name">Number of guests: </label>
-<input id="name" type="integer" name='party[people]' value="<%= @party.people %>"><br> 
+<input id="name" type="integer" name='party[people]'><br> 
 
-<select name="party[table_number]">
+<label for="avail_table">Available tables: </label> 
+<select id="avail_table" name="party[table_number]">
      <% @available.each do |avail| %>
      <option id="table_number" type="number" value="<%= avail %>"><%= avail %> </option>
      <% end %>
 </select>
 
-<input type="hidden" name="party[tip]" value="0.00">
-
-<!-- <input type="hidden" name="party[server]" value="server[id]">
- -->
 <input type="submit">
 
 </form>

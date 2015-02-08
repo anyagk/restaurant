@@ -1,12 +1,14 @@
 require_relative 'food'
 require_relative 'order'
+require_relative 'employee'
 
 
 
 class Party < ActiveRecord::Base
   has_many :orders, dependent: :destroy
   has_many :foods, through: :orders
-  belongs_to :server
+  belongs_to :employee
+
 
   def self.free_table
     numbers = (1..15)

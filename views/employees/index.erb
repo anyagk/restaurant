@@ -1,0 +1,5 @@
+  <h2>All Employees</h2><br>
+
+  <% @employees.each do |employee| %>
+    <li><a href="/employees/<%= employee.id %>"><%= employee.name %></a></li>
+  <% end %>

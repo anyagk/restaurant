@@ -1,7 +1,8 @@
-<h2>All Parties</h2><br>
+<h2>All Open Table</h2><br>
 <ul>
   <% @parties.each do |party| %>
+  <% unless party.paid %>
     <li><a href="/parties/<%= party.id %>">Table number <%= party.table_number %></a></li>
+      <% end %>
   <% end %>
 </ul><br>
-<a href="/parties/new">Add party</a>

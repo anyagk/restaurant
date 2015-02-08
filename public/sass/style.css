@@ -1,0 +1,13 @@
+form {
+  width: 50%; }
+
+form label {
+  display: block; }
+
+form input[type='text'] {
+  width: 100%; }
+
+form input + label {
+  margin-top: 1em; }
+
+/*# sourceMappingURL=style.css.map */

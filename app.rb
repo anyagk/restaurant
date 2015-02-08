@@ -2,15 +2,19 @@ Dir["models/*.rb"].each do |file|
   require_relative file
 end
 
-
-
 class Restaurant < Sinatra::Base
   register Sinatra::ActiveRecordExtension
+
+  set :default_currency_unit, '$'
+  set :default_currency_precision, 2
+  set :default_currency_separator, ' '
+  enable :sessions
 
   get '/welcome' do 
     "Welcome"
     # erb :'static/welcome'
   end  
+
 
   get '/foods' do 
     @foods = Food.all
@@ -19,6 +23,7 @@ class Restaurant < Sinatra::Base
   end
 
   get '/foods/new' do 
+    @allergens = Allergen.all
 
     erb :'foods/new'
   end
@@ -26,39 +31,34 @@ class Restaurant < Sinatra::Base
   get '/foods/:id' do 
     food_id = params[:id]
     @food = Food.find(food_id)
+    @allergens = Allergen.all
 
     erb :'foods/show'
   end
 
   post '/foods' do
-      food = Food.create(name: params[:food][:name], price: params[:food][:price], course_type: params[:food][:course_type], description: params[:food][:description])
-      food_allergens = (params[:food][:food_allergen])
-      food_allergens.each do |food_allergen| 
-        allergen_id = Allergen.find_by(name: food_allergen).id
-        FoodAllergen.create(allergen_id: allergen_id, food_id: food.id)
-      end
-      
-      redirect to "/foods/#{food.id}"
+     food = Food.create(params[:food])
+     @allergens = Allergen.all
+     if food.valid?
+     redirect to "/foods/#{food.id}"
+     else 
+       @food = food
+       @error_messages = food.errors.messages
+       erb :'foods/new'
+     end
   end
 
   get '/foods/:id/edit' do
     @food = Food.find(params[:id]) 
+    @allergens = Allergen.all
     
     erb :'foods/edit'
   end
 
+
   patch '/foods/:id' do
     food = Food.find(params[:id])
-    food.food_allergens.destroy_all
-    food.update(name: params[:food][:name], price: params[:food][:price])
-    food_allergens = (params[:food][:food_allergen])
-    
-    food_allergens.each do |food_allergen| 
-      allergen_id = Allergen.find_by(name: food_allergen).id
-      FoodAllergen.create(allergen_id: allergen_id, food_id: params[:id])
-
-    end
-
+    food.update(params[:food])
     redirect to "/foods/#{food.id}"
   end
 
@@ -81,47 +81,59 @@ class Restaurant < Sinatra::Base
     erb :'parties/new'
   end
 
+  post '/parties' do 
+    party = Party.create(params[:party])
+    party.update(employee_id: session[:id])
+
+    redirect to "/parties/#{party.id}"
+  end
+
   get '/parties/:id' do 
     party_id = params[:id]
     @party = Party.find(party_id)
-    @foods = @party.foods
+    @foods = Food.all
+    @orders = @party.orders
 
     erb :'parties/show'
   end
 
-  post '/parties' do 
-    party = Party.create(params[:party])
-    redirect to "/parties/#{party.id}"
-  end
+  # get '/parties/:id/edit' do 
+  #   @party = Party.find(params[:id]) 
+  #   @foods = Food.all 
+  #   erb :'parties/edit'
+  # end
 
-  get '/parties/:id/edit' do 
-    @party = Party.find(params[:id]) 
-    @foods = Food.all 
-    erb :'parties/edit'
-  end
-
-  post '/parties/:id/orders' do 
-    params[:oder][:party_id] = params[:id]
+  post '/orders' do 
     order = Order.create(params[:order])
 
-    redirect to "/parties/#{party.id}"
+    redirect to "/parties/#{order.party_id}"
   end
 
-  get '/parties/:id/checkout' do 
-    @party = Party.find(params[:id])
-    erb :'parties/checkout'
-  end    
+  patch '/orders/:id' do
+    order = Order.find(params[:id])
+    order.update(params[:order])
+    redirect to "/parties/#{order.party_id}"
+  end
+  
 
   patch '/parties/:id' do
     party = Party.find(params[:id])
     party.update(people: params[:party][:people])
     Order.create(party_id: params[:id], food_id: params[:party][:orders][:food_id])
+    Order.update
     
     redirect to "/parties/#{party.id}"
   end
 
-  delete '/parties/:id/orders' do
-    params[:oder][:party_id] = params[:id]
+  delete '/orders/:id' do
+    order = Order.find(params[:id])
+    order.destroy
+
+    redirect to "/parties/#{order.party_id}"
+  end
+
+  delete '/orders/:id/' do
+    params[:order][:party_id] = params[:id]
     order = Order.find(params[:id])
     order.destroy
 
@@ -139,6 +151,29 @@ class Restaurant < Sinatra::Base
     @party = Party.find(params[:id])
     erb :'parties/receipt'
   end
+
+  patch '/parties/:id/closeout' do 
+    @party = Party.find(params[:id])
+    @party.update(params[:party])
+    @party.update(paid: true)
+
+    redirect to '/parties'  
+  end
+
+  get '/employees' do
+    @employees = Employee.all
+
+    erb :'employees/index'
+  end
+
+   get '/employees/:id' do
+     @employee = Employee.find(params[:id])
+     session[:id] = @employee.id
+     @parties = @employee.parties
+
+     erb :'employees/show'
+   end
+
 
   get "/console" do
     Pry.start(binding)  

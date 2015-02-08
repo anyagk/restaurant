@@ -1,3 +1,11 @@
+<% if @error_messages %>
+ <ul>
+   <% @error_messages.each do |error_name, error_message| %>
+      <li class='error'><%= error_name %>: <%= error_message[0] %></li>
+   <% end %>
+ </ul>
+<% end %>
+
 <form action="/foods" method="post">
   <label for="name">Menu item name: </label>
   <input id="name" type="text" name='food[name]'><br> 
@@ -15,12 +23,14 @@
   <option value="Dessert">Dessert</option>
   </select><br>
 
-  <label for="allergens">Allergens: </label>
-  <input id="allergens" type="checkbox" name="food[food_allergen][]" value="dairy">Dairy
-  <input id="allergens" type="checkbox" name="food[food_allergen][]" value="soy">Soy
-  <input id="allergens" type="checkbox" name="food[food_allergen][]" value="gluten">Gluten
-  <input id="allergens" type="checkbox" name="food[food_allergen][]" value="nuts">Nuts
-  <input id="allergens" type="checkbox" name="food[food_allergen][]" value="shellfish">Shellfish
+  <% @allergens.each do |allergen| %>
+  <input id="allergen_<%= allergen.id %>" 
+        type="checkbox" 
+        name="food[allergen_ids][]" 
+        value="<%= allergen.id %>">
+  <label for="allergen_<%= allergen.id %>"><%= allergen.name %></label>
+  <% end %>
+ 
 
   <input type="submit">
 </form>

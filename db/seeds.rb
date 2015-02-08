@@ -16,6 +16,17 @@ ActiveRecord::Base.establish_connection(
 # Party.destroy_all
 # Order.destroy_all
 
+# CREATE EMPLOYEES
+[
+  {
+    name: "Nancy"
+  },
+  {
+    name: "Paul"
+  }  
+].each do |employee|
+  Employee.create( employee )
+end
 
 
 # CREATE FOODS
@@ -65,12 +76,12 @@ end
   {
     table_number: 11,
     people: 2,
-    paid: true
+    employee_id: 1
   },
   {
     table_number: 12,
     people: 4,
-    paid: false
+    employee_id: 2
   } 
 ].each do |party|
   Party.create( party )
