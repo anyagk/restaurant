@@ -12,9 +12,26 @@ ActiveRecord::Base.establish_connection(
   host: "localhost" 
 )
 
-# Food.destroy_all
-# Party.destroy_all
-# Order.destroy_all
+ActiveRecord::Base.connection.execute <<-SQL
+DROP TABLE foods; CREATE TABLE foods 
+(id SERIAL PRIMARY KEY, name TEXT, description TEXT, course_type TEXT, price INT, created_at TIMESTAMP, updated_at TIMESTAMP);
+
+DROP TABLE parties; CREATE TABLE parties
+(id SERIAL PRIMARY KEY, table_number INT, people INT, paid BOOLEAN DEFAULT 'f', tip FLOAT DEFAULT 0.00, total FLOAT, employee_id INTEGER, created_at TIMESTAMP, updated_at TIMESTAMP);
+
+DROP TABLE orders; CREATE TABLE orders
+(id SERIAL PRIMARY KEY, party_id INT, food_id INT, comped BOOLEAN DEFAULT 'f', created_at TIMESTAMP, updated_at TIMESTAMP);
+
+DROP TABLE allergens; CREATE TABLE allergens
+(id SERIAL PRIMARY KEY, name TEXT, created_at TIMESTAMP, updated_at TIMESTAMP);
+
+DROP TABLE food_allergens; CREATE TABLE food_allergens
+(id SERIAL PRIMARY KEY, food_id INTEGER, allergen_id INTEGER, created_at TIMESTAMP, updated_at TIMESTAMP);
+
+DROP TABLE employees; CREATE TABLE employees
+(id SERIAL PRIMARY KEY, name TEXT, created_at TIMESTAMP, updated_at TIMESTAMP);
+SQL
+
 
 # CREATE EMPLOYEES
 [
@@ -57,7 +74,7 @@ end
   },
   {
     name: "Candied grapefruit",
-    description: "Candied grapefruit with hazelnut sorbet",
+    description: "Candied grapefruit with cilantro and mint sorbet",
     course_type: "Dessert",
     price: 11
   },
