@@ -9,7 +9,7 @@
 <% end %>
 
 <form action="/foods" method="post">
-  <label for="name">Menu item name: </label>
+  <div class="button"><label for="name">Menu item name: </label>
   <input id="name" type="text" name='food[name]'><br> 
   
   <label for="description">Menu item description: </label>
@@ -31,8 +31,8 @@
         name="food[allergen_ids][]" 
         value="<%= allergen.id %>">
   <label for="allergen_<%= allergen.id %>"><%= allergen.name %></label>
-  <% end %>
+  <% end %></div>
  
 
-  <input type="submit">
+  <br><div class="button"><input type="submit"></div>
 </form>

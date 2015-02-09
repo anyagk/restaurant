@@ -1,7 +1,7 @@
-  <h2>All Employees</h2><br>
-
-  <p>Please select your name to start a new table</p>
+  <h3>Please select your name to start a new table or see your tips</h3><br>
 
   <% @employees.each do |employee| %>
     <li><a href="/employees/<%= employee.id %>"><%= employee.name %></a></li>
-  <% end %>
+  <% end %><br><br><br>
+
+  <div class="button"><a href="/employees/new">Enter a new employee</a></div>

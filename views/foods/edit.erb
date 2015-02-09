@@ -1,6 +1,6 @@
 <h2>Editing <%= @food.name %></h2>
 
-<form action="/foods/<%= @food.id %>" method="POST">
+<div class="button"><form action="/foods/<%= @food.id %>" method="POST">
 <input type="hidden" name="_method" value="patch">
 
 <label for="name">Menu item name: </label>
@@ -21,12 +21,12 @@
      name="food[allergen_ids][]" 
      value="<%= allergen.id %>">
 <label for="allergen_<%= allergen.id %>"><%= allergen.name %></label>
-<% end %>
+<% end %></div><br>
 
-  <input type="submit">
+  <div class="button"><input type="submit"></div>
 </form>
 
 <form action="/foods/<%= @food.id %>" method="POST">
   <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Menu Item">
-</form>
+  <div class="button"><input type="submit" value="Delete Menu Item"></div>
+</form><br>

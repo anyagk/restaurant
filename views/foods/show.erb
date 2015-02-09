@@ -6,7 +6,6 @@
 <% @food.allergens.each do |allergen| %>
 <li><%= allergen.name %></li>
 <% end %>
-</ul>
-<p>Course: <%= @food.course_type %></p><br>
+</ul><br><br><br>
 
-<a href="/foods/<%= @food.id %>/edit">Change the Menu Item</a>
+<div class="button"><a href="/foods/<%= @food.id %>/edit">Change the Menu Item</a></dvi>

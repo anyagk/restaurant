@@ -1,8 +1,8 @@
 <h2><%= @employee.name %></h2>
-  <% tips_total = 0 %>
+  <% tips_total = 0.00 %>
     <% @parties.each do |party| %>
-      <% tips_total += party.tip %>
+      <% tips_total += party.tip || 0%>
       <% end %>
-    <p>Tips: <%=currency(tips_total) %></p>
+    <p>Tips so far: <%=currency(tips_total) %></p><br><br><br>
 
-<a href="/parties/new">Add party</a>
+<div class="button"><a href="/parties/new">Add party</a></div>

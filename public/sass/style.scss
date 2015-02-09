@@ -49,6 +49,8 @@ a {
     background-color: $first;
     width: 200px;
     float: left;
+    border: $fourth solid 6px;
+    border-radius: 12px;
     p {
       font-family: 'Open Sans Condensed', sans-serif;
       font-size: 36px;
@@ -105,27 +107,38 @@ ul {
 }
 main {
   list-style-type: none;
-  margin-top: 90px;
+  margin-top: 100px;
   margin-bottom: 60px;
-  h2 {
-    font-family: 'Bree Serif', Georgia, serif;
+  text-align: center;
+  h2, h3 {
+    font-family: 'Open Sans Condensed', sans-serif;
     color: $second;
+    margin: 25px;
+  }
+  h2 {
+    font-size: 32px;
+    font-family: 'Karma', serif;
+  }
+  h3 {
+    padding-top: 18px;
+    font-size: 29px;
+    font-family: 'Karma', serif;
   }
   p {
     font-family: 'Open Sans Condensed', sans-serif;
     color: $second;
-    font-size: 30px;
+    font-size: 27px;
   }
   li {
     list-style-type: none;
     font-family: 'Open Sans Condensed', sans-serif;
     color: $second;
-    font-size: 22px;    
+    font-size: 20px;    
   }
   a {
     font-family: 'Open Sans Condensed', sans-serif;
     list-style: none;
-    font-size: 28px;
+    font-size: 25px;
     color: $second;
       a:active {
         color: $second;
@@ -133,19 +146,93 @@ main {
   }
 }
 
+select {
+  background: transparent;
+  width: 160px;
+  padding: 5px;
+  font-size: 20px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: $third;  
+  line-height: 1;
+  border: 1px solid $second;
+  border-radius: 8px;
+  height: 34px;
+  select:hover {
+    color: $third;
+  }
+}
+
+
+.button {
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: $second;
+  display: inline-block;
+  border-left: 1px, solid, $second;
+  border-right: 1px, solid, $second;
+  font-size: 15px;
+  span {
+    font-size: 18px;
+  }
+  .button:hover {
+    color: $third;
+  }
+    a {
+      padding: 1px 4px;
+      border-left: 2px solid $third;
+      border-right: 2px solid $third;
+      border-radius: 8px;
+    }
+      a:hover {
+        color: $third;
+      }
+        a:active {
+          color: $second;
+        }
+}
+
+
+.tip p {
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  padding: 0;
+  border: inherit;
+  background: none;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: $second;
+  background-image: none;
+  box-shadow: none;
+  border: 1px, solid, $second;
+  font-size: 15px;
+}
+
 main a:hover {
   color: $third;
+}
+
+main a:active {
+  color: $second;
 }
 
 footer {
   font-family: 'Open Sans Condensed', sans-serif;
   color: $third;
-  padding: 20px;
+  padding: 20px 20px 10px 20px;
   position: relative;
 }
 
-@media only screen and (max-width: 550px) {
-  
+@media only screen and (max-width: 6000px) {
+.navbar {
+ display: block;
+ float: none;
+   a { 
+     display: block;
+     width: 100%;
+     text-align: center;
+     float: none;
+   }
+ }
 }
 
 @media only screen and (min-width: 1300px) {

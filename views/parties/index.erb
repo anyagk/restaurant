@@ -1,9 +1,9 @@
-<h2>All Open Table</h2><br>
+<h2>All Open Tables</h2><br>
 <ul>
   <% @parties.each do |party| %>
   <% unless party.paid %>
     <li><a href="/parties/<%= party.id %>">Table number <%= party.table_number %></a></li>
       <% end %>
   <% end %>
-</ul><br>
-<a href="/employees">Start a new table</a>
+</ul><br><br><br><br>
+<div class="button"><a href="/employees">Start a new table</a></div>

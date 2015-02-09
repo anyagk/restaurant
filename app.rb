@@ -160,6 +160,12 @@ class Restaurant < Sinatra::Base
     erb :'employees/index'
   end
 
+  get '/employees/new' do 
+    @employee = Employee.new
+
+    erb :'employees/new'
+  end
+
   get '/employees/:id' do
     @employee = Employee.find(params[:id])
     session[:id] = @employee.id

@@ -3,7 +3,8 @@ create login and password feature
 STYLING
 
 
-
+'Open Sans Condensed', sans-serif;
+'Bree Serif', Georgia, serif;
 
 
 
