@@ -98,7 +98,7 @@ a {
 }
 
 main {
-  list-style: none;
+  list-style-type: none;
   margin-top: 90px;
   margin-bottom: 60px;
   h2 {
@@ -111,6 +111,7 @@ main {
     font-size: 30px;
   }
   li {
+    list-style-type: none;
     font-family: 'Open Sans Condensed', sans-serif;
     color: $second;
     font-size: 22px;    

@@ -76,7 +76,7 @@ a {
   left: 0; }
 
 main {
-  list-style: none;
+  list-style-type: none;
   margin-top: 90px;
   margin-bottom: 60px; }
   main h2 {
@@ -87,6 +87,7 @@ main {
     color: #383B53;
     font-size: 30px; }
   main li {
+    list-style-type: none;
     font-family: 'Open Sans Condensed', sans-serif;
     color: #383B53;
     font-size: 22px; }
