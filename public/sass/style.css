@@ -31,6 +31,8 @@ a {
 
 .navbar {
   background-color: #D4D6B9; }
+  .navbar a {
+    color: #32213A; }
   .navbar #logo {
     background-color: #32213A;
     width: 200px;
@@ -74,6 +76,9 @@ a {
   position: fixed;
   top: 0;
   left: 0; }
+
+ul {
+  list-style-type: none; }
 
 main {
   list-style-type: none;

@@ -38,7 +38,7 @@ CREATE TABLE foods
 (id SERIAL PRIMARY KEY, name TEXT, description TEXT, course_type TEXT, price INT, created_at TIMESTAMP, updated_at TIMESTAMP);
 
 CREATE TABLE parties
-(id SERIAL PRIMARY KEY, table_number INT, people INT, paid BOOLEAN, tip FLOAT DEFAULT 0.00, total FLOAT, employee_id INTEGER, created_at TIMESTAMP, updated_at TIMESTAMP);
+(id SERIAL PRIMARY KEY, table_number INT, people INT, paid BOOLEAN DEFAULT 'false', tip FLOAT DEFAULT 0.00, total FLOAT, employee_id INTEGER, created_at TIMESTAMP, updated_at TIMESTAMP);
 
 CREATE TABLE orders
 (id SERIAL PRIMARY KEY, party_id INT, food_id INT, comped BOOLEAN DEFAULT 'f', created_at TIMESTAMP, updated_at TIMESTAMP);
@@ -53,24 +53,4 @@ CREATE TABLE employees
 (id SERIAL PRIMARY KEY, name TEXT, created_at TIMESTAMP, updated_at TIMESTAMP);
 
 sass -w style.scss:style.css
-
-<input type="hidden" name="party[paid]" value="true">
-
-<form action="/parties/<%= party.id %>/closeout" method="post">
-<label for="tip">Tip: </label>
-<input id="tip" type="integer" name='party[tip]'><br>
-<label for="total">Total: </label>
-<input id="total" type="integer" name='party[total]'><br>
-
-<input type="hidden" name="party[paid]" value="true">
-<input type="submit">
-<input type="hidden" name="_method" value="PATCH">
-</form>
-<br> 
-
-<h3>Suggested gratuity:</h3>
-<p>15%: <%= currency(bill * 0.15) %> </p>
-<p>20%: <%= currency(bill * 0.20) %> </p>
-<p>25%: <%= currency(bill * 0.25) %> </p>
-<p>Thank you, please visit us again!</p>
 
