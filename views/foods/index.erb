@@ -4,7 +4,7 @@
 <ul>
   <% @foods.each do |food| %>
     <% if food.course_type == "Appetizer" %>
-      <li><a href="/foods/<%= food.id %>"><%= food.name %> - <%= currency(food.price) %></a></li><li><%= food.description %></li> 
+      <li><a href="/foods/<%= food.id %>"><%= food.name %> - <%= food.price %></a></li><li><%= food.description %></li> 
     <% end %>
   <% end %>
 </ul><br>
@@ -13,7 +13,7 @@
 <ul>
   <% @foods.each do |food| %>
     <% if food.course_type == "Entree" %>
-      <li><a href="/foods/<%= food.id %>"><%= food.name %> - <%= currency(food.price) %></a></li><li><%= food.description %></li> 
+      <li><a href="/foods/<%= food.id %>"><%= food.name %> - <%= food.price %></a></li><li><%= food.description %></li> 
     <% end %>
   <% end %>
 </ul><br>
@@ -22,7 +22,7 @@
 <ul>
   <% @foods.each do |food| %>
     <% if food.course_type == "Dessert" %>
-      <li><a href="/foods/<%= food.id %>"><%= food.name %> - <%= currency(food.price) %></a></li><li><%= food.description %></li> 
+      <li><a href="/foods/<%= food.id %>"><%= food.name %> - <%= food.price %></a></li><li><%= food.description %></li> 
     <% end %>
   <% end %>
 </ul></br>

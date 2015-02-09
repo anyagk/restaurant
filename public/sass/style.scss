@@ -1,4 +1,4 @@
-form {
+/*form {
  width: 50%;
 }
 
@@ -13,7 +13,145 @@ form input[type='text'] {
 form input + label {
  margin-top: 1em;
 } 
-
-#logo {
-  font-family: 'Open Sans Condensed', sans-serif;
+*/
+body, nav, div, span, article, p, ul, li, a {
+ margin: 0;
+ border: 0;
+ padding: 0;
+ font: inherit;
 }
+
+
+$first: #32213A;
+$second: #383B53;
+$third: #66717E;
+$fourth: #D4D6B9;
+$fifth: #D1CAA1;
+
+body {
+  background-color: $fourth;
+  list-style: none;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.navbar {
+  background-color: $fourth;
+  #logo {
+    background-color: $first;
+    width: 200px;
+    float: left;
+    p {
+      font-family: 'Open Sans Condensed', sans-serif;
+      font-size: 36px;
+      color: $fifth;
+      border: $third solid 2px;
+      border-radius: 6px;
+      text-align: center;
+      padding-bottom: 8px;
+      margin: 10px 10px 12px 10px;
+    }
+    }
+  .links {
+    line-height: 41px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 30px;
+    color: $first;
+    margin: 15px 10px;
+    float: right;
+    list-style: none;
+      a:hover {
+        color: $third;
+      }
+        a:active {
+          color: $first;
+        } 
+          li {
+            float: left;
+          }
+            li + li {
+              margin-left: 12px;
+              border-left: 1px solid $first;
+              padding-left: 8px;
+              height: 45px;
+            }
+    
+}
+
+}
+.clearfix:after {
+  clear: both;
+  display: block;
+  content: "";
+}
+
+.sticky {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+main {
+  list-style: none;
+  margin-top: 90px;
+  margin-bottom: 60px;
+  h2 {
+    font-family: 'Bree Serif', Georgia, serif;
+    color: $second;
+  }
+  p {
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: $second;
+    font-size: 30px;
+  }
+  li {
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: $second;
+    font-size: 22px;    
+  }
+  a {
+    font-family: 'Open Sans Condensed', sans-serif;
+    list-style: none;
+    font-size: 28px;
+    color: $second;
+      a:active {
+        color: $second;
+      }
+  }
+}
+
+main a:hover {
+  color: $third;
+}
+
+footer {
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: $third;
+  padding: 20px;
+  position: relative;
+}
+
+@media only screen and (max-width: 550px) {
+  
+}
+
+@media only screen and (min-width: 1300px) {
+  
+}
+
+@media print {
+ .no-print {
+   display: none;
+ }
+}
+
+
+
+
+

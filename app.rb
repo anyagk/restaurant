@@ -97,12 +97,6 @@ class Restaurant < Sinatra::Base
     erb :'parties/show'
   end
 
-  # get '/parties/:id/edit' do 
-  #   @party = Party.find(params[:id]) 
-  #   @foods = Food.all 
-  #   erb :'parties/edit'
-  # end
-
   post '/orders' do 
     order = Order.create(params[:order])
 
