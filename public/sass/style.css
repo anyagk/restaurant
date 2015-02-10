@@ -134,13 +134,13 @@ select {
   background: transparent;
   width: 160px;
   padding: 5px;
-  font-size: 20px;
+  font-size: 16px;
   font-family: 'Open Sans Condensed', sans-serif;
   color: #66717E;
   line-height: 1;
   border: 1px solid #383B53;
   border-radius: 8px;
-  height: 30px;
+  height: 32px;
   margin: 4px; }
   select select:hover {
     color: #66717E; }
