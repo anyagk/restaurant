@@ -53,5 +53,6 @@ CREATE TABLE food_allergens
 CREATE TABLE employees
 (id SERIAL PRIMARY KEY, name TEXT, created_at TIMESTAMP, updated_at TIMESTAMP);
 
+in public/sass 
 sass -w style.scss:style.css
 
