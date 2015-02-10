@@ -10,12 +10,6 @@ class Restaurant < Sinatra::Base
   set :default_currency_separator, ' '
   enable :sessions
 
-  get '/welcome' do 
-    "Welcome" 
-    # erb :'static/welcome'
-  end  
-
-
   get '/foods' do 
     @foods = Food.all
 
@@ -186,7 +180,7 @@ class Restaurant < Sinatra::Base
   end
 
   get "/*" do
-    redirect to("/welcome")
+    redirect to("/foods")
   end
 
 end  

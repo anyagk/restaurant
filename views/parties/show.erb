@@ -1,18 +1,18 @@
-<h3>Table: <%= @party.table_number %>, <%= @party.people %> top</h3>
-<p>Server: <%= @party.employee.name %></p>
+<h3>Table: <%= @party.table_number %></h3>
+<p class="parties">Server: <%= @party.employee.name %></p>
 <% if @party.paid %> 
-<p>This check is closed.</p>
+<p class="parties">This check is closed.</p>
 <% else %> 
-<p>This check is still open.</p>
+<p class="parties">This check is still open.</p>
 <% end %> 
 
-<p>Food ordered:</p>
+<p id="reload">Food ordered:</p>
 <ul>
   <% @party.orders.each do |order| %>
   <li><%= order.food.name %>
 
     <% unless order.comped %>
-    <div class="button"><form action="/orders/<%= order.id %>"  method="POST">
+    <div class="button"><form action="/orders/<%= order.id %>#reload"  method="POST">
       <input type="hidden" name="_method" value="PATCH">
       <input type="hidden" name="order[comped]" value="true">
       <input type="submit" value="Comp item"></div>
@@ -29,7 +29,7 @@
 
     <% unless @party.paid %>
     <div class="button"><form action="/orders" method="POST">
-      <label for="food"><span>Add menu items to the table's order</span></label> 
+      <label for="food"><span>Add menu items to the table's order</span></label><br> 
       <select id="food" name="order[food_id]">
         <% @foods.each do |food| %>
         <option value="<%= food.id %>"><%= food.name %></option>

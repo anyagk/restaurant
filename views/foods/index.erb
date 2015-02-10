@@ -1,6 +1,6 @@
 <h2>Menu</h2>
 
-<h3>Appetizers</h3>
+<h3 class="menu">Appetizers</h3>
 <ul>
   <% @foods.each do |food| %>
     <% if food.course_type == "Appetizer" %>
@@ -9,7 +9,7 @@
   <% end %>
 </ul>
 
-<h3>Entrees</h3>
+<h3 class="menu">Entrees</h3>
 <ul>
   <% @foods.each do |food| %>
     <% if food.course_type == "Entree" %>
@@ -18,7 +18,7 @@
   <% end %>
 </ul>
 
-<h3>Desserts</h3>
+<h3 class="menu">Desserts</h3>
 <ul>
   <% @foods.each do |food| %>
     <% if food.course_type == "Dessert" %>

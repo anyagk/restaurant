@@ -31,8 +31,6 @@ a {
 
 .navbar {
   background-color: #D4D6B9; }
-  .navbar a {
-    color: #32213A; }
   .navbar #logo {
     background-color: #32213A;
     width: 200px;
@@ -42,12 +40,18 @@ a {
     .navbar #logo p {
       font-family: 'Open Sans Condensed', sans-serif;
       font-size: 36px;
-      color: #D1CAA1;
+      color: #D4D6B9;
       border: #66717E solid 2px;
       border-radius: 6px;
       text-align: center;
       padding-bottom: 8px;
       margin: 10px 10px 12px 10px; }
+      .navbar #logo p a {
+        color: #D4D6B9; }
+      .navbar #logo p a:hover {
+        color: #D4D6B9; }
+      .navbar #logo p a:active {
+        color: #D4D6B9; }
   .navbar .links {
     line-height: 41px;
     font-family: 'Open Sans Condensed', sans-serif;
@@ -84,32 +88,37 @@ ul {
 
 main {
   list-style-type: none;
-  margin-top: 100px;
+  margin-top: 110px;
   margin-bottom: 60px;
   text-align: center; }
   main h2, main h3 {
     font-family: 'Open Sans Condensed', sans-serif;
     color: #383B53;
-    margin: 25px; }
+    margin: 6px; }
   main h2 {
     font-size: 32px;
     font-family: 'Karma', serif; }
   main h3 {
-    padding-top: 18px;
-    font-size: 29px;
-    font-family: 'Karma', serif; }
+    font-size: 25px;
+    font-family: 'Karma', serif;
+    line-height: 30px; }
+  main h3.menu {
+    margin-top: 18px; }
   main p {
     font-family: 'Open Sans Condensed', sans-serif;
     color: #383B53;
     font-size: 27px; }
+  main p.parties {
+    font-size: 18px; }
   main li {
     list-style-type: none;
     font-family: 'Open Sans Condensed', sans-serif;
     color: #383B53;
-    font-size: 20px; }
+    font-size: 20px;
+    max-width: 600px;
+    margin: 0 auto; }
   main a {
     font-family: 'Open Sans Condensed', sans-serif;
-    list-style: none;
     font-size: 25px;
     color: #383B53; }
     main a a:active {
@@ -125,7 +134,8 @@ select {
   line-height: 1;
   border: 1px solid #383B53;
   border-radius: 8px;
-  height: 34px; }
+  height: 30px;
+  margin: 4px; }
   select select:hover {
     color: #66717E; }
 
@@ -133,20 +143,19 @@ select {
   font-family: 'Open Sans Condensed', sans-serif;
   color: #383B53;
   display: inline-block;
-  border-left: 1px, solid, #383B53;
-  border-right: 1px, solid, #383B53;
   font-size: 15px; }
   .button span {
     font-size: 18px; }
-  .button .button:hover {
-    color: #66717E; }
   .button a {
     padding: 1px 4px;
     border-left: 2px solid #66717E;
     border-right: 2px solid #66717E;
     border-radius: 8px; }
   .button a:hover {
-    color: #66717E; }
+    color: #66717E;
+    cursor: pointer;
+    border-left: 2px dotted #66717E;
+    border-right: 2px dotted #66717E; }
   .button a:active {
     color: #383B53; }
 
@@ -154,15 +163,29 @@ select {
   font-size: 16px; }
 
 input[type="submit"] {
-  padding: 0;
+  padding: 4px;
+  margin: 4px;
   border: inherit;
   background: none;
   font-family: 'Open Sans Condensed', sans-serif;
   color: #383B53;
+  line-height: 12px;
   background-image: none;
   box-shadow: none;
-  border: 1px, solid, #383B53;
+  border-top: 1px dotted #383B53;
+  border-bottom: 1px dotted #383B53;
+  border-radius: 3px;
   font-size: 15px; }
+
+input[type="submit"]:hover {
+  color: #66717E;
+  border-top: 1px solid #66717E;
+  border-bottom: 1px solid #66717E;
+  border-radius: 3px;
+  cursor: pointer; }
+
+input[type="submit"]:active {
+  color: #383B53; }
 
 main a:hover {
   color: #66717E; }

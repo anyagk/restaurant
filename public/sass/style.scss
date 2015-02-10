@@ -42,49 +42,55 @@ a {
 
 .navbar {
   background-color: $fourth;
-  a {
-    color: $first;
-  }
-  #logo {
-    background-color: $first;
-    width: 200px;
-    float: left;
-    border: $fourth solid 6px;
-    border-radius: 12px;
-    p {
-      font-family: 'Open Sans Condensed', sans-serif;
-      font-size: 36px;
-      color: $fifth;
-      border: $third solid 2px;
-      border-radius: 6px;
-      text-align: center;
-      padding-bottom: 8px;
-      margin: 10px 10px 12px 10px;
-    }
-    }
-  .links {
-    line-height: 41px;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 30px;
-    color: $first;
-    margin: 15px 10px;
-    float: right;
-    list-style: none;
-      a:hover {
-        color: $third;
-      }
+    #logo {
+      background-color: $first;
+      width: 200px;
+      float: left;
+      border: $fourth solid 6px;
+      border-radius: 12px;
+      p {
+        a {
+          color: $fourth;
+        }
+        a:hover {
+          color: $fourth;
+        }
         a:active {
+          color: $fourth;
+        }
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-size: 36px;
+        color: $fourth;
+        border: $third solid 2px;
+        border-radius: 6px;
+        text-align: center;
+        padding-bottom: 8px;
+        margin: 10px 10px 12px 10px;
+      }
+      }
+        .links {
+          line-height: 41px;
+          font-family: 'Open Sans Condensed', sans-serif;
+          font-size: 30px;
           color: $first;
-        } 
-          li {
-            float: left;
-          }
-            li + li {
-              margin-left: 12px;
-              border-left: 1px solid $first;
-              padding-left: 8px;
-              height: 45px;
+          margin: 15px 10px;
+          float: right;
+          list-style: none;
+            a:hover {
+              color: $third;
             }
+              a:active {
+                color: $first;
+              } 
+                li {
+                  float: left;
+                }
+                  li + li {
+                    margin-left: 12px;
+                    border-left: 1px solid $first;
+                    padding-left: 8px;
+                    height: 45px;
+                  }
     
 }
 
@@ -105,44 +111,52 @@ a {
 ul {
   list-style-type: none;
 }
+
 main {
   list-style-type: none;
-  margin-top: 100px;
+  margin-top: 110px;
   margin-bottom: 60px;
   text-align: center;
   h2, h3 {
     font-family: 'Open Sans Condensed', sans-serif;
     color: $second;
-    margin: 25px;
+    margin: 6px;
   }
-  h2 {
-    font-size: 32px;
-    font-family: 'Karma', serif;
-  }
-  h3 {
-    padding-top: 18px;
-    font-size: 29px;
-    font-family: 'Karma', serif;
-  }
-  p {
-    font-family: 'Open Sans Condensed', sans-serif;
-    color: $second;
-    font-size: 27px;
-  }
-  li {
-    list-style-type: none;
-    font-family: 'Open Sans Condensed', sans-serif;
-    color: $second;
-    font-size: 20px;    
-  }
-  a {
-    font-family: 'Open Sans Condensed', sans-serif;
-    list-style: none;
-    font-size: 25px;
-    color: $second;
-      a:active {
-        color: $second;
+    h2 {
+      font-size: 32px;
+      font-family: 'Karma', serif;
+    }
+      h3 {
+        font-size: 25px;
+        font-family: 'Karma', serif;
+        line-height: 30px;
       }
+        h3.menu {
+          margin-top: 18px;
+        }
+          p {
+            font-family: 'Open Sans Condensed', sans-serif;
+            color: $second;
+            font-size: 27px;
+          }
+            p.parties {
+              font-size: 18px;
+            }
+              li {
+                list-style-type: none;
+                font-family: 'Open Sans Condensed', sans-serif;
+                color: $second;
+                font-size: 20px;
+                max-width: 600px;
+                margin: 0 auto;
+              }
+                a {
+                  font-family: 'Open Sans Condensed', sans-serif;
+                  font-size: 25px;
+                  color: $second;
+                    a:active {
+                      color: $second;
+                    }
   }
 }
 
@@ -156,7 +170,8 @@ select {
   line-height: 1;
   border: 1px solid $second;
   border-radius: 8px;
-  height: 34px;
+  height: 30px;
+  margin: 4px;
   select:hover {
     color: $third;
   }
@@ -167,15 +182,11 @@ select {
   font-family: 'Open Sans Condensed', sans-serif;
   color: $second;
   display: inline-block;
-  border-left: 1px, solid, $second;
-  border-right: 1px, solid, $second;
   font-size: 15px;
   span {
     font-size: 18px;
   }
-  .button:hover {
-    color: $third;
-  }
+  
     a {
       padding: 1px 4px;
       border-left: 2px solid $third;
@@ -184,6 +195,9 @@ select {
     }
       a:hover {
         color: $third;
+        cursor: pointer;
+        border-left: 2px dotted $third;
+        border-right: 2px dotted $third;
       }
         a:active {
           color: $second;
@@ -196,15 +210,31 @@ select {
 }
 
 input[type="submit"] {
-  padding: 0;
+  padding: 4px;
+  margin: 4px;
   border: inherit;
   background: none;
   font-family: 'Open Sans Condensed', sans-serif;
   color: $second;
+  line-height: 12px;
   background-image: none;
   box-shadow: none;
-  border: 1px, solid, $second;
+  border-top: 1px dotted $second;
+  border-bottom: 1px dotted $second;
+  border-radius: 3px;
   font-size: 15px;
+}
+
+input[type="submit"]:hover {
+  color: $third;
+  border-top: 1px solid $third;
+  border-bottom: 1px solid $third;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+input[type="submit"]:active {
+  color: $second;
 }
 
 main a:hover {
