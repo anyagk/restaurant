@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 Dir["models/*.rb"].each do |file|
   require_relative file
 end

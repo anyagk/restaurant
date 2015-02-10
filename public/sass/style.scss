@@ -21,6 +21,8 @@ body, nav, div, span, article, p, ul, li, a {
  font: inherit;
 }
 
+input, textarea, select, a { outline: none; }
+
 
 $first: #32213A;
 $second: #383B53;

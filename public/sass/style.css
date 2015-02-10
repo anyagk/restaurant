@@ -20,6 +20,9 @@ body, nav, div, span, article, p, ul, li, a {
   padding: 0;
   font: inherit; }
 
+input, textarea, select, a {
+  outline: none; }
+
 body {
   background-color: #D4D6B9;
   list-style: none;
