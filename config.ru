@@ -5,13 +5,16 @@ require 'bundler'
 Bundler.require :default
 
 # Then connect to the database
-#set :database, {
-#  adapter: "postgresql", database: "restaurant_db",
-#  host: "localhost"
-#}
-
-
-ActiveRecord::Base.establish_connection("postgresql://" + ENV["DB_INFO"] + "@127.0.0.1/restaurant_db")
+if ENV['APP_ENV'] == 'production'
+  set :database, {
+    adapter: "postgresql", database: "restaurant_db"
+  }
+else
+  set :database, {
+    adapter: "postgresql", database: "restaurant_db",
+    host: "localhost"
+  }
+end
 
 use Rack::MethodOverride
 
