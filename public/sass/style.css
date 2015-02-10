@@ -108,6 +108,9 @@ main {
     font-family: 'Open Sans Condensed', sans-serif;
     color: #383B53;
     font-size: 27px; }
+  main p.desc {
+    max-width: 600px;
+    margin: 0 auto; }
   main p.parties {
     font-size: 18px; }
   main li {

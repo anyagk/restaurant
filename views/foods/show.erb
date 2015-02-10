@@ -1,6 +1,6 @@
 <h2><%= @food.name %></h2>
-<p><%= @food.description %></p>
-<p>$<%= @food.price %></p>
+<p class="desc"><%= @food.description %></p>
+<p><%=currency(@food.price) %></p>
 <p>Allergens:</p>
 <ul>
 <% @food.allergens.each do |allergen| %>

@@ -139,6 +139,10 @@ main {
             color: $second;
             font-size: 27px;
           }
+            p.desc {
+              max-width: 600px;
+              margin: 0 auto;
+            }
             p.parties {
               font-size: 18px;
             }
@@ -159,6 +163,7 @@ main {
                     }
   }
 }
+
 
 select {
   background: transparent;
