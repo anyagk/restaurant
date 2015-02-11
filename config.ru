@@ -16,7 +16,14 @@ else
   }
 end
 
+
 use Rack::MethodOverride
 
-require './app'
+map('/foods') { run FoodsController }
+map('/parties') { run PartiesController }
+map('/employees') { run EmployeesController }
+map('/orders') { run OrdersController }
+
+run Sinatra::Application
 run Restaurant
+
