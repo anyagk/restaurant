@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
 
-  get '/' do
+  get '' do
     @employees = Employee.all
 
     erb :'employees/index'
@@ -20,10 +20,10 @@ class EmployeesController < ApplicationController
     erb :'employees/show'
   end
 
-  post '/' do 
+  post '' do 
     employee = Employee.create(params[:employee])
 
-    redirect to "/employees/#{employee.id}"
+    redirect to "/#{employee.id}"
   end
 
 

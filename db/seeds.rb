@@ -13,37 +13,31 @@ ActiveRecord::Base.establish_connection(
 )
 
 ActiveRecord::Base.connection.execute <<-SQL
-DROP TABLE IF EXISTS foods; CREATE TABLE foods 
-(id SERIAL PRIMARY KEY, name TEXT, description TEXT, course_type TEXT, price INT, created_at TIMESTAMP, updated_at TIMESTAMP);
+DROP TABLE IF EXISTS foods; CREATE TABLE foods (id SERIAL PRIMARY KEY, name TEXT, description TEXT, course_type TEXT, price INT, created_at TIMESTAMP, updated_at TIMESTAMP);
 
-DROP TABLE IF EXISTS parties; CREATE TABLE parties
-(id SERIAL PRIMARY KEY, table_number INT, people INT, paid BOOLEAN DEFAULT 'f', tip FLOAT DEFAULT 0.00, total FLOAT, employee_id INTEGER, created_at TIMESTAMP, updated_at TIMESTAMP);
+DROP TABLE IF EXISTS parties; CREATE TABLE parties (id SERIAL PRIMARY KEY, table_number INT, people INT, paid BOOLEAN DEFAULT 'f', tip FLOAT DEFAULT 0.00, total FLOAT, employee_id INTEGER, created_at TIMESTAMP, updated_at TIMESTAMP);
 
-DROP TABLE IF EXISTS orders; CREATE TABLE orders
-(id SERIAL PRIMARY KEY, party_id INT, food_id INT, comped BOOLEAN DEFAULT 'f', created_at TIMESTAMP, updated_at TIMESTAMP);
+DROP TABLE IF EXISTS orders; CREATE TABLE orders (id SERIAL PRIMARY KEY, party_id INT, food_id INT, comped BOOLEAN DEFAULT 'f', created_at TIMESTAMP, updated_at TIMESTAMP);
 
-DROP TABLE IF EXISTS allergens; CREATE TABLE allergens
-(id SERIAL PRIMARY KEY, name TEXT, created_at TIMESTAMP, updated_at TIMESTAMP);
+DROP TABLE IF EXISTS allergens; CREATE TABLE allergens (id SERIAL PRIMARY KEY, name TEXT, created_at TIMESTAMP, updated_at TIMESTAMP);
 
-DROP TABLE IF EXISTS food_allergens; CREATE TABLE food_allergens
-(id SERIAL PRIMARY KEY, food_id INTEGER, allergen_id INTEGER, created_at TIMESTAMP, updated_at TIMESTAMP);
+DROP TABLE IF EXISTS food_allergens; CREATE TABLE food_allergens (id SERIAL PRIMARY KEY, food_id INTEGER, allergen_id INTEGER, created_at TIMESTAMP, updated_at TIMESTAMP);
 
-DROP TABLE IF EXISTS employees; CREATE TABLE employees
-(id SERIAL PRIMARY KEY, name TEXT, created_at TIMESTAMP, updated_at TIMESTAMP);
+DROP TABLE IF EXISTS employees; CREATE TABLE employees(id SERIAL PRIMARY KEY, name TEXT, password_digest TEXT NOT NULL, authorization_token TEXT, created_at TIMESTAMP, updated_at TIMESTAMP);
 SQL
 
 
 # CREATE EMPLOYEES
-[
-  {
-    name: "Nancy"
-  },
-  {
-    name: "Paul"
-  }  
-].each do |employee|
-  Employee.create( employee )
-end
+# [
+#   {
+#     name: "Nancy"
+#   },
+#   {
+#     name: "Paul"
+#   }  
+# ].each do |employee|
+#   Employee.create( employee )
+# end
 
 
 # CREATE FOODS
@@ -89,70 +83,70 @@ end
 end
 
 #CREATE PARTIES
-[
-  {
-    table_number: 11,
-    people: 2,
-    employee_id: 1
-  },
-  {
-    table_number: 12,
-    people: 4,
-    employee_id: 2
-  } 
-].each do |party|
-  Party.create( party )
-end
+# [
+#   {
+#     table_number: 11,
+#     people: 2,
+#     employee_id: 1
+#   },
+#   {
+#     table_number: 12,
+#     people: 4,
+#     employee_id: 2
+#   } 
+# ].each do |party|
+#   Party.create( party )
+# end
 
 #CREATE ORDERS
-[
-  {
-    party_id: 1,
-    food_id: 1
-  },
-  {
-    party_id: 1,
-    food_id: 2
-  },  
-  {
-    party_id: 1,
-    food_id: 3
-  },
-  {
-    party_id: 1,
-    food_id: 6
-  },
-  {
-    party_id: 2,
-    food_id: 1
-  },
-  {
-    party_id: 2,
-    food_id: 1
-  },
-  {
-    party_id: 2,
-    food_id: 3
-  },
-  {
-    party_id: 2,
-    food_id: 4
-  },
-  {
-    party_id: 2,
-    food_id: 4
-  },            
-  {
-    party_id: 2,
-    food_id: 5
-  },
-  {
-    party_id: 2,
-    food_id: 5
-  }
-].each do |order|
-  Order.create( order )
-end
+# [
+#   {
+#     party_id: 1,
+#     food_id: 1
+#   },
+#   {
+#     party_id: 1,
+#     food_id: 2
+#   },  
+#   {
+#     party_id: 1,
+#     food_id: 3
+#   },
+#   {
+#     party_id: 1,
+#     food_id: 6
+#   },
+#   {
+#     party_id: 2,
+#     food_id: 1
+#   },
+#   {
+#     party_id: 2,
+#     food_id: 1
+#   },
+#   {
+#     party_id: 2,
+#     food_id: 3
+#   },
+#   {
+#     party_id: 2,
+#     food_id: 4
+#   },
+#   {
+#     party_id: 2,
+#     food_id: 4
+#   },            
+#   {
+#     party_id: 2,
+#     food_id: 5
+#   },
+#   {
+#     party_id: 2,
+#     food_id: 5
+#   }
+# ].each do |order|
+#   Order.create( order )
+# end
 
 #CREATE allergens
 
@@ -228,16 +222,6 @@ end
   ].each do |food_allergen|
     FoodAllergen.create( food_allergen )
   end
-
-
-
-
-
-
-
-
-
-
 
 
 

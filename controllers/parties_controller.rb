@@ -1,6 +1,6 @@
 class PartiesController < ApplicationController
 
-  get '/' do 
+  get '' do 
     @parties = Party.all
 
     erb :'parties/index'
@@ -12,11 +12,11 @@ class PartiesController < ApplicationController
     erb :'parties/new'
   end
 
-  post '/' do 
+  post '' do 
     party = Party.create(params[:party])
     party.update(employee_id: session[:id])
 
-    redirect to "/parties/#{party.id}"
+    redirect to "/#{party.id}"
   end
 
   get '/:id' do 
@@ -34,14 +34,14 @@ class PartiesController < ApplicationController
     Order.create(party_id: params[:id], food_id: params[:party][:orders][:food_id])
     Order.update
     
-    redirect to "/parties/#{party.id}"
+    redirect to "/#{party.id}"
   end
 
   delete '/:id' do
     party = Party.find(params[:id])
     party.destroy 
     
-    redirect to '/parties'
+    redirect to ''
   end
 
   get '/:id/receipt'  do
@@ -54,7 +54,7 @@ class PartiesController < ApplicationController
     @party.update(params[:party])
     @party.update(paid: true)
 
-    redirect to '/parties'  
+    redirect to ''  
   end
 
 

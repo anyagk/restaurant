@@ -1,8 +1,4 @@
-['models/concerns', 'models', 'helpers', 'controllers'].each do |component|
-  Dir["#{component}/*.rb"].sort.each do |file|
-    require File.expand_path(file)
-  end
-end
+
 
 
 class Restaurant < Sinatra::Base
@@ -12,6 +8,7 @@ class Restaurant < Sinatra::Base
   set :default_currency_precision, 2
   set :default_currency_separator, ' '
   
+  enable :method_override
   enable :sessions
 
   get "/console" do

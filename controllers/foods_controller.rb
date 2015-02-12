@@ -1,6 +1,6 @@
 class FoodsController < ApplicationController
 
-  get '/' do 
+  get '' do 
     @foods = Food.all
 
     erb :'foods/index'
@@ -24,7 +24,7 @@ class FoodsController < ApplicationController
      food = Food.create(params[:food])
      @allergens = Allergen.all
      if food.valid?
-     redirect to "/foods/#{food.id}"
+     redirect to "/#{food.id}"
      else 
        @food = food
        @error_messages = food.errors.messages
@@ -39,18 +39,17 @@ class FoodsController < ApplicationController
     erb :'foods/edit'
   end
 
-
   patch '/:id' do
     food = Food.find(params[:id])
     food.update(params[:food])
-    redirect to "/foods/#{food.id}"
+    redirect to "/#{food.id}"
   end
 
   delete '/:id' do
     food = Food.find(params[:id])
     food.destroy 
     
-    redirect to '/foods'
+    redirect to ''
   end
     
 end

@@ -1,22 +1,22 @@
 class OrdersController < ApplicationController
 
-  post '/' do 
+  post '' do 
     order = Order.create(params[:order])
 
-    redirect to "/parties/#{order.party_id}"
+    redirect to "/#{order.party_id}"
   end
 
   patch '/:id' do
     order = Order.find(params[:id])
     order.update(params[:order])
-    redirect to "/parties/#{order.party_id}"
+    redirect to "/#{order.party_id}"
   end
   
   delete '/:id' do
     order = Order.find(params[:id])
     order.destroy
 
-    redirect to "/parties/#{order.party_id}"
+    redirect to "/#{order.party_id}"
   end
 
   # delete '/:id/' do
